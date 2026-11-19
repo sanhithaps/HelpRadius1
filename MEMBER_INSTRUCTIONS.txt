@@ -1,13 +1,13 @@
 ﻿HelpRadius Collaborative Distributed Development (CDD)
-Part: Part1_Backend_Core
+Part: Part2_Services_and_Models
 
 Instructions for Team Member:
 1. Extract all files from this zip into your local repository root.
 2. Checkout a new Git branch:
-   git checkout -b feature/part1-backend-core
+   git checkout -b feature/part2-services-and-models
 3. Add and commit your part's files:
    git add .
-   git commit -m "feat: implement Part1_Backend_Core components for HelpRadius"
+   git commit -m "feat: implement Part2_Services_and_Models components for HelpRadius"
 4. Push to the team GitHub repository:
-   git push origin feature/part1-backend-core
+   git push origin feature/part2-services-and-models
 5. Create a Pull Request on GitHub and merge into 'develop' or 'main'.
