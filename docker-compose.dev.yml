@@ -1,0 +1,41 @@
+version: '3.8'
+
+# Development Docker Compose with live volume mounts & hot reload
+services:
+  backend-dev:
+    image: node:20-alpine
+    container_name: help-radius-backend-dev
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=development
+      - CORS_ORIGIN=*
+    command: sh -c "npm install && npm run dev"
+    networks:
+      - help-radius-dev-net
+
+  frontend-dev:
+    image: node:20-alpine
+    container_name: help-radius-frontend-dev
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:5000/api
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - backend-dev
+    networks:
+      - help-radius-dev-net
+
+networks:
+  help-radius-dev-net:
+    driver: bridge
